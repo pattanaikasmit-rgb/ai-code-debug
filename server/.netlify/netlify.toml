@@ -1,0 +1,28 @@
+functionsDirectory = "C:\\Users\\DELL\\OneDrive\\Desktop\\Project report\\AI-Code-Debugger\\server\\netlify\\functions"
+functionsDirectoryOrigin = "config-v1"
+plugins = []
+headers = []
+redirects = []
+
+[build]
+publish = "C:\\Users\\DELL\\OneDrive\\Desktop\\Project report\\AI-Code-Debugger\\server"
+publishOrigin = "default"
+functions = "C:\\Users\\DELL\\OneDrive\\Desktop\\Project report\\AI-Code-Debugger\\server\\netlify\\functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[functions]
+
+[functions."*"]
