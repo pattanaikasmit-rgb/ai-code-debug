@@ -10,46 +10,8 @@ import Navbar from './components/Navbar'
 import OutputPanel from './components/OutputPanel'
 import WorkspacePage from './components/WorkspacePage'
 
-const buildEnvApiBaseUrl = import.meta.env.REACT_APP_API_URL || import.meta.env.VITE_API_BASE_URL
-const runtimeApiBaseUrl = typeof window !== 'undefined' ? window.location.origin : ''
-const isDevMode = Boolean(import.meta.env.DEV)
-
-const isPrivateNetworkUrl = (value) => {
-  if (!value || typeof value !== 'string') {
-    return false
-  }
-
-  const url = value.replace(/\/$/, '')
-  return /^https?:\/\/(localhost|127\.0\.0\.1|10\.\d{1,3}\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|172\.(1[6-9]|2\d|3[0-1])\.\d{1,3}\.\d{1,3})(?::\d{1,5})?$/.test(url)
-}
-
-const getFallbackApiBaseUrl = () => {
-  // In Vite dev, use relative `/api` and let vite.config proxy handle backend routing.
-  // This avoids browser CORS issues for localhost/LAN device access.
-  if (isDevMode) {
-    return ''
-  }
-
-  const normalizedRuntimeOrigin = runtimeApiBaseUrl.replace(/\/$/, '')
-  const normalizedBuildUrl = buildEnvApiBaseUrl?.replace(/\/$/, '') || ''
-
-  if (normalizedBuildUrl && isPrivateNetworkUrl(normalizedBuildUrl)) {
-    const runtimeIsPublic = normalizedRuntimeOrigin && !isPrivateNetworkUrl(normalizedRuntimeOrigin)
-
-    if (typeof window !== 'undefined' && runtimeIsPublic) {
-      console.warn(
-        'Ignoring private backend URL in browser runtime:',
-        normalizedBuildUrl,
-        'Using frontend origin instead.'
-      )
-      return normalizedRuntimeOrigin
-    }
-  }
-
-  return normalizedBuildUrl || normalizedRuntimeOrigin
-}
-
-const API_BASE_URL = getFallbackApiBaseUrl()
+// Direct API configuration using environment variable
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL || ''
 const getApiUrl = (path) => `${API_BASE_URL}${path}`
 
 const starterMessage = {
