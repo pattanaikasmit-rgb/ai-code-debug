@@ -31,7 +31,7 @@ const ChatAssistant = ({
                 className={`max-w-[94%] break-words rounded-2xl px-4 py-3 text-sm leading-6 shadow-sm sm:max-w-[90%] ${
                   isUser
                     ? 'bg-sky-500 text-white'
-                    : 'border border-slate-700 bg-slate-900 text-slate-100'
+                    : 'border border-slate-700 bg-slate-900 text-slate-100 dark:text-slate-100'
                 }`}
               >
                 <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] opacity-80">
@@ -45,7 +45,7 @@ const ChatAssistant = ({
 
         {isLoading ? (
           <div className="flex justify-start">
-            <div className="rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-100">
+            <div className="rounded-2xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-100 dark:text-slate-100">
               <Loader text="Thinking..." />
             </div>
           </div>
@@ -53,19 +53,19 @@ const ChatAssistant = ({
       </div>
 
       {!isAuthenticated ? (
-        <div className="mb-3 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-100">
+        <div className="mb-3 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-100 dark:text-amber-100">
           Sign in to send protected chat requests to the backend.
         </div>
       ) : null}
 
       {error ? (
-        <div className="mb-3 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-sm text-rose-100">
+        <div className="mb-3 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-sm text-rose-100 dark:text-rose-100">
           {error}
         </div>
       ) : null}
 
       <form onSubmit={onSubmit} className="space-y-3">
-        <label htmlFor="chat-question" className="text-sm font-semibold text-slate-200">
+        <label htmlFor="chat-question" className="text-sm font-semibold text-slate-200 dark:text-slate-200">
           Ask a question
         </label>
         <textarea
